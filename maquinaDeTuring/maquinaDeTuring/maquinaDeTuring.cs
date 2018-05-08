@@ -15,7 +15,7 @@ namespace maquinaDeTuring
         private string estadoInicial;
         private string blanco;
         private string[] estadoFinal;
-        private Dictionary<string, string> trancisiones;
+        private Dictionary<string, string> transiciones;
         private string estadoActualMaquina;
 
         //Constructor
@@ -26,23 +26,24 @@ namespace maquinaDeTuring
             estadoInicial = iEstadoInicial;
             blanco = iBlanco;
             estadoFinal = iEstadoFinal;
+            transiciones = new Dictionary<string, string>();
         }
 
         //Agregar transiciones
         public void agregarTransicion(string iLlave, string iValor) {
-            trancisiones.Add(iLlave, iValor);
+            transiciones.Add(iLlave, iValor);
         }
 
         //Obtener 
         public string obtenerTransicion(string iLlave) {
             string salida;
-            trancisiones.TryGetValue(iLlave, out salida);
+            transiciones.TryGetValue(iLlave, out salida);
             return salida;
         }
 
         //Consultar
         public bool consultaTransicion(string iLlave) {
-            return trancisiones.ContainsKey(iLlave);
+            return transiciones.ContainsKey(iLlave);
         }
 
         //Verificar si estado es Final()
@@ -68,6 +69,11 @@ namespace maquinaDeTuring
                 }
             }
             return true;
+        }
+
+        //Volver la maquina a estado cero si hay necesidad de volver a hacer otra maquina igual.
+        public void volverAEstadoCero() {
+            estadoActualMaquina = "q0";
         }
 
 

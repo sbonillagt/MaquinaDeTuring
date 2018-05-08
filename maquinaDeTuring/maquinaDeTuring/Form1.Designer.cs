@@ -29,38 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbxSeleccionMT = new System.Windows.Forms.ComboBox();
+            this.txtCadena = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAvanzarAutomatico = new System.Windows.Forms.Button();
             this.btnAvanzarPasoAPaso = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvCintaMT = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnEmpezar = new System.Windows.Forms.Button();
+            this.lblIndicadorEstadoContador = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCintaMT)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbxSeleccionMT
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbxSeleccionMT.FormattingEnabled = true;
+            this.cbxSeleccionMT.Items.AddRange(new object[] {
             "Palindromos (a, b, c)",
             "Copiar Patrones (a, b, c)",
             "Multiplicaciones Codigo Unario",
             "Suma Codigo Unario",
             "Resta Codigo Unario"});
-            this.comboBox1.Location = new System.Drawing.Point(18, 94);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(209, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cbxSeleccionMT.Location = new System.Drawing.Point(18, 94);
+            this.cbxSeleccionMT.Name = "cbxSeleccionMT";
+            this.cbxSeleccionMT.Size = new System.Drawing.Size(209, 21);
+            this.cbxSeleccionMT.TabIndex = 0;
             // 
-            // textBox1
+            // txtCadena
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(209, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtCadena.Location = new System.Drawing.Point(18, 36);
+            this.txtCadena.Name = "txtCadena";
+            this.txtCadena.Size = new System.Drawing.Size(209, 20);
+            this.txtCadena.TabIndex = 1;
             // 
             // label1
             // 
@@ -83,7 +85,7 @@
             // 
             // btnAvanzarAutomatico
             // 
-            this.btnAvanzarAutomatico.Location = new System.Drawing.Point(21, 132);
+            this.btnAvanzarAutomatico.Location = new System.Drawing.Point(21, 183);
             this.btnAvanzarAutomatico.Name = "btnAvanzarAutomatico";
             this.btnAvanzarAutomatico.Size = new System.Drawing.Size(206, 48);
             this.btnAvanzarAutomatico.TabIndex = 4;
@@ -93,7 +95,7 @@
             // 
             // btnAvanzarPasoAPaso
             // 
-            this.btnAvanzarPasoAPaso.Location = new System.Drawing.Point(21, 197);
+            this.btnAvanzarPasoAPaso.Location = new System.Drawing.Point(21, 237);
             this.btnAvanzarPasoAPaso.Name = "btnAvanzarPasoAPaso";
             this.btnAvanzarPasoAPaso.Size = new System.Drawing.Size(206, 48);
             this.btnAvanzarPasoAPaso.TabIndex = 5;
@@ -110,35 +112,58 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Maquina de Turing";
             // 
-            // dataGridView1
+            // dgvCintaMT
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(257, 94);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(599, 73);
-            this.dataGridView1.TabIndex = 7;
+            this.dgvCintaMT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCintaMT.Location = new System.Drawing.Point(257, 94);
+            this.dgvCintaMT.Name = "dgvCintaMT";
+            this.dgvCintaMT.Size = new System.Drawing.Size(599, 73);
+            this.dgvCintaMT.TabIndex = 7;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnEmpezar
+            // 
+            this.btnEmpezar.Location = new System.Drawing.Point(21, 129);
+            this.btnEmpezar.Name = "btnEmpezar";
+            this.btnEmpezar.Size = new System.Drawing.Size(206, 48);
+            this.btnEmpezar.TabIndex = 8;
+            this.btnEmpezar.Text = "Empezar";
+            this.btnEmpezar.UseVisualStyleBackColor = true;
+            this.btnEmpezar.Click += new System.EventHandler(this.btnEmpezar_Click);
+            // 
+            // lblIndicadorEstadoContador
+            // 
+            this.lblIndicadorEstadoContador.AutoSize = true;
+            this.lblIndicadorEstadoContador.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndicadorEstadoContador.Location = new System.Drawing.Point(254, 183);
+            this.lblIndicadorEstadoContador.Name = "lblIndicadorEstadoContador";
+            this.lblIndicadorEstadoContador.Size = new System.Drawing.Size(400, 33);
+            this.lblIndicadorEstadoContador.TabIndex = 9;
+            this.lblIndicadorEstadoContador.Text = "lblIndicadorEstadoContador";
+            this.lblIndicadorEstadoContador.UseMnemonic = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 413);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblIndicadorEstadoContador);
+            this.Controls.Add(this.btnEmpezar);
+            this.Controls.Add(this.dgvCintaMT);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAvanzarPasoAPaso);
             this.Controls.Add(this.btnAvanzarAutomatico);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtCadena);
+            this.Controls.Add(this.cbxSeleccionMT);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCintaMT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,15 +171,17 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbxSeleccionMT;
+        private System.Windows.Forms.TextBox txtCadena;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAvanzarAutomatico;
         private System.Windows.Forms.Button btnAvanzarPasoAPaso;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCintaMT;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnEmpezar;
+        private System.Windows.Forms.Label lblIndicadorEstadoContador;
     }
 }
 

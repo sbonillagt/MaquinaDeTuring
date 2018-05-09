@@ -16,7 +16,7 @@ namespace maquinaDeTuring
         private string blanco;
         private string[] estadoFinal;
         private Dictionary<string, string> transiciones;
-        private string estadoActualMaquina;
+        private string estadoActualMaquina= "q0";
         private string estadoEntrada = "";
         private string estadoSalidaDirreccion = "";
         private string transicionActual;

@@ -24,6 +24,8 @@ namespace maquinaDeTuring
         maquinaDeTuring palindromos = new maquinaDeTuring(new string[] { "q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7" }, new string[] { "a", "b","c" }, new string[] { "a", "b", "c","B" }, "q0", "B", new string[] {"q0", "q2","q5","q7" });
 
         maquinaDeTuring multiplicacion = new maquinaDeTuring(new string[] { "q0", "q1", "q2", "q3", "q4", "q5", "q6", }, new string[] { "1", "*" }, new string[] { "1", "*", "=","B" }, "q0", "B", new string[] { "q6" });
+        maquinaDeTuring resta = new maquinaDeTuring(new string[] { "q0", "q1", "q2", "q3","q4" }, new string[] { "1", "-" }, new string[] { "1", "-", "B" }, "q0", "B", new string[] { "q0","q4" });
+
         public Form1()
         {
             InitializeComponent();
@@ -179,6 +181,20 @@ namespace maquinaDeTuring
             multiplicacion.agregarTransicion("q5,1", "q5,1,L");
             multiplicacion.agregarTransicion("q5,*", "q5,*,L");
             multiplicacion.agregarTransicion("q5,B", "q0,1,R");
+
+            //RestaUnaria
+            resta.agregarTransicion("q0,1", ("q1,B,R"));
+
+            resta.agregarTransicion("q1,1", ("q1,1,R"));
+            resta.agregarTransicion("q1,-", ("q1,-,R"));
+            resta.agregarTransicion("q1,B", ("q2,B,L"));
+
+            resta.agregarTransicion("q2,1", ("q3,B,L"));
+            resta.agregarTransicion("q2,-", ("q4,1,L"));
+
+            resta.agregarTransicion("q3,1", ("q3,1,L"));
+            resta.agregarTransicion("q3,-", ("q3,-,L"));
+            resta.agregarTransicion("q3,B", ("q0,B,R"));
         }
 
         private void errorDeCadenaSimbolos() {
@@ -344,7 +360,34 @@ namespace maquinaDeTuring
                     break;
 
                 case "Resta Codigo Unario":
-                    timer1.Enabled = false;
+                    simboloAux = dgvCintaMT[cabezalMT, 0].Value.ToString();
+                    if (resta.siguienteEstado(simboloAux))
+                    {
+                        lblIndicadorEstadoContador.Text = "Estado: " + resta.obtenerEstadoActual() + " Contador Pasos: " + contadorPasos.ToString();
+                        transicionAuxSplit = resta.obtenerTransicionActual().Split(',');
+                        dgvCintaMT[cabezalMT, 0].Value = transicionAuxSplit[1];
+                        dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.White;
+                        cabezalMT = cabezalMT + dirreccion(transicionAuxSplit[2]);
+                        dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.Yellow;
+                        contadorPasos++;
+                    }
+                    else
+                    {
+                        if (resta.esEstadoFinal())
+                        {
+                            lblIndicadorEstadoContador.Text = "Cadena aceptada, se realizo en: " + contadorPasos.ToString() + " pasos.";
+                            btnAvanzarAutomatico.Enabled = false;
+                            btnAvanzarPasoAPaso.Enabled = false;
+                            timer1.Enabled = false;
+                        }
+                        else
+                        {
+                            lblIndicadorEstadoContador.Text = "Cadena no aceptada, se realizo en: " + contadorPasos.ToString() + " pasos.";
+                            btnAvanzarAutomatico.Enabled = false;
+                            btnAvanzarPasoAPaso.Enabled = false;
+                            timer1.Enabled = false;
+                        }
+                    }
                     break;
             }
         }
@@ -431,6 +474,18 @@ namespace maquinaDeTuring
                             break;
 
                         case "Resta Codigo Unario":
+                            if (resta.verificarSimbolosEntrada(cadena))
+                            {
+                                cadena = txtCadena.Text + "BBBBBBBB";
+                                resta.volverAEstadoCero();
+                                btnAvanzarAutomatico.Enabled = true;
+                                btnAvanzarPasoAPaso.Enabled = true;
+                                agregarACinta();
+                            }
+                            else
+                            {
+                                errorDeCadenaSimbolos();
+                            }
                             break;
                     }
                 }

@@ -107,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(352, 14);
+            this.label3.Location = new System.Drawing.Point(616, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(347, 42);
             this.label3.TabIndex = 6;
@@ -116,9 +116,9 @@
             // dgvCintaMT
             // 
             this.dgvCintaMT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCintaMT.Location = new System.Drawing.Point(257, 94);
+            this.dgvCintaMT.Location = new System.Drawing.Point(251, 94);
             this.dgvCintaMT.Name = "dgvCintaMT";
-            this.dgvCintaMT.Size = new System.Drawing.Size(599, 73);
+            this.dgvCintaMT.Size = new System.Drawing.Size(1073, 73);
             this.dgvCintaMT.TabIndex = 7;
             // 
             // timer1
@@ -150,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 413);
+            this.ClientSize = new System.Drawing.Size(1336, 303);
             this.Controls.Add(this.lblIndicadorEstadoContador);
             this.Controls.Add(this.btnEmpezar);
             this.Controls.Add(this.dgvCintaMT);

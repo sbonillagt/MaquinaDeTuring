@@ -253,14 +253,14 @@ namespace maquinaDeTuring
                     {
                         if (palindromos.esEstadoFinal())
                         {
-                            lblIndicadorEstadoContador.Text = "Cadena aceptada, se realizo en: " + contadorPasos.ToString() + " pasos.";
+                            lblIndicadorEstadoContador.Text = "Cadena aceptada (Si es palindromo), se realizo en: " + contadorPasos.ToString() + " pasos.";
                             btnAvanzarAutomatico.Enabled = false;
                             btnAvanzarPasoAPaso.Enabled = false;
                             timer1.Enabled = false;
                         }
                         else
                         {
-                            lblIndicadorEstadoContador.Text = "Cadena no aceptada, se realizo en: " + contadorPasos.ToString() + " pasos.";
+                            lblIndicadorEstadoContador.Text = "Cadena no aceptada (No es palindromo), se realizo en: " + contadorPasos.ToString() + " pasos.";
                             btnAvanzarAutomatico.Enabled = false;
                             btnAvanzarPasoAPaso.Enabled = false;
                             timer1.Enabled = false;

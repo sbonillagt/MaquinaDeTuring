@@ -17,6 +17,9 @@ namespace maquinaDeTuring
         private string[] estadoFinal;
         private Dictionary<string, string> transiciones;
         private string estadoActualMaquina;
+        private string estadoEntrada = "";
+        private string estadoSalidaDirreccion = "";
+        private string transicionActual;
 
         //Constructor
         public maquinaDeTuring(string[] iEstado, string[] iSimboloEntrada, string[] iSimboloCinta, string iEstadoInicial, string iBlanco, string[] iEstadoFinal) {
@@ -74,6 +77,31 @@ namespace maquinaDeTuring
         //Volver la maquina a estado cero si hay necesidad de volver a hacer otra maquina igual.
         public void volverAEstadoCero() {
             estadoActualMaquina = "q0";
+        }
+
+        public void ponerActual(string icadena) {
+            estadoActualMaquina = icadena;
+        }
+
+        public string obtenerTransicionActual() {
+            return transicionActual;
+        }
+
+        //public void obtener
+
+        public bool siguienteEstado(string icaracter) {
+            estadoEntrada= obtenerTransicion(obtenerEstadoActual() + "," + icaracter);
+            if (estadoEntrada != null)
+            {
+                transicionActual = estadoEntrada;
+                string[] split = estadoEntrada.Split(',');
+                estadoActualMaquina = split[0];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

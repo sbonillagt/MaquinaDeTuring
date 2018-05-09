@@ -101,6 +101,7 @@
             this.btnAvanzarPasoAPaso.TabIndex = 5;
             this.btnAvanzarPasoAPaso.Text = "Avanzar Paso a Paso";
             this.btnAvanzarPasoAPaso.UseVisualStyleBackColor = true;
+            this.btnAvanzarPasoAPaso.Click += new System.EventHandler(this.btnAvanzarPasoAPaso_Click);
             // 
             // label3
             // 

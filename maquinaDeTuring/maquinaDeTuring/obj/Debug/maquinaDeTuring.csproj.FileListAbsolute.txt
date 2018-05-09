@@ -1,9 +1,9 @@
 C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\bin\Debug\maquinaDeTuring.exe.config
-C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\bin\Debug\maquinaDeTuring.exe
-C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\bin\Debug\maquinaDeTuring.pdb
+C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.exe
+C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.pdb
 C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.csprojResolveAssemblyReference.cache
 C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.Form1.resources
 C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.Properties.Resources.resources
 C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.csproj.GenerateResource.Cache
-C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.exe
-C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\obj\Debug\maquinaDeTuring.pdb
+C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\bin\Debug\maquinaDeTuring.exe
+C:\Users\Sebastian\Documents\GitHub\MaquinaDeTuring\maquinaDeTuring\maquinaDeTuring\bin\Debug\maquinaDeTuring.pdb

@@ -61,17 +61,18 @@ namespace maquinaDeTuring
 
         //Verificar que los simbolos de entrada pertenezcan a la maquina 
         public bool verificarSimbolosEntrada( string iCadena) {
+            bool bandera = false;
             for (int i = 0; i < iCadena.Length; i++)
             {
                 if (simboloEntrada.Contains(iCadena[i].ToString()))
                 {
-                    return true;
+                    bandera= true;
                 }
                 else {
-                    return false;
+                    bandera= false;
                 }
             }
-            return true;
+            return bandera;
         }
 
         //Volver la maquina a estado cero si hay necesidad de volver a hacer otra maquina igual.

@@ -17,7 +17,9 @@ namespace maquinaDeTuring
         int contadorPasos = 0;
         string[] transicionAuxSplit;
         //Definiciones de Maquinas
+        // public maquinaDeTuring(string[] iEstado, string[] iSimboloEntrada, string[] iSimboloCinta, string iEstadoInicial, string iBlanco, string[] iEstadoFinal)
         maquinaDeTuring sumaUnaria = new maquinaDeTuring(new string[] { "q0", "q1", "q2", "q3" }, new string[] { "1", "+" }, new string[] { "1", "+", "B" }, "q0", "B", new string[] { "q3" });
+        maquinaDeTuring copiaPatrones = new maquinaDeTuring(new string[] { "q0", "q1", "q2", "q3","q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11" }, new string[] { "a", "b","c" }, new string[] { "a", "b", "c","x","B" }, "q0", "B", new string[] { "q7" });
         public Form1()
         {
             InitializeComponent();
@@ -54,6 +56,70 @@ namespace maquinaDeTuring
         }
 
         private void inicializarMaquinasTuring() {
+            //COPIAR PATRONES
+            copiaPatrones.agregarTransicion("q0,a", "q1,B,R");
+            copiaPatrones.agregarTransicion("q0,b", "q3,B,R");
+            copiaPatrones.agregarTransicion("q0,c", "q5,B,R");
+            copiaPatrones.agregarTransicion("q0,x", "q7,B,R");
+
+            copiaPatrones.agregarTransicion("q1,a", "q1,a,R");
+            copiaPatrones.agregarTransicion("q1,b", "q1,b,R");
+            copiaPatrones.agregarTransicion("q1,c", "q1,c,R");
+            copiaPatrones.agregarTransicion("q1,x", "q1,x,R");
+            copiaPatrones.agregarTransicion("q1,B", "q2,a,L");
+
+            copiaPatrones.agregarTransicion("q2,a", "q2,a,L");
+            copiaPatrones.agregarTransicion("q2,b", "q2,b,L");
+            copiaPatrones.agregarTransicion("q2,c", "q2,c,L");
+            copiaPatrones.agregarTransicion("q2,x", "q2,x,L");
+            copiaPatrones.agregarTransicion("q2,B", "q0,a,R");
+
+            copiaPatrones.agregarTransicion("q3,a", "q3,a,R");
+            copiaPatrones.agregarTransicion("q3,b", "q3,b,R");
+            copiaPatrones.agregarTransicion("q3,c", "q3,c,R");
+            copiaPatrones.agregarTransicion("q3,x", "q3,x,R");
+            copiaPatrones.agregarTransicion("q3,B", "q4,b,L");
+
+            copiaPatrones.agregarTransicion("q4,a", "q4,a,L");
+            copiaPatrones.agregarTransicion("q4,b", "q4,b,L");
+            copiaPatrones.agregarTransicion("q4,c", "q4,c,L");
+            copiaPatrones.agregarTransicion("q4,x", "q4,x,L");
+            copiaPatrones.agregarTransicion("q4,B", "q0,b,R");
+
+            copiaPatrones.agregarTransicion("q5,a", "q5,a,R");
+            copiaPatrones.agregarTransicion("q5,b", "q5,b,R");
+            copiaPatrones.agregarTransicion("q5,c", "q5,c,R");
+            copiaPatrones.agregarTransicion("q5,x", "q5,x,R");
+            copiaPatrones.agregarTransicion("q5,B", "q6,c,L");
+
+            copiaPatrones.agregarTransicion("q6,a", "q6,a,L");
+            copiaPatrones.agregarTransicion("q6,b", "q6,b,L");
+            copiaPatrones.agregarTransicion("q6,c", "q6,c,L");
+            copiaPatrones.agregarTransicion("q6,x", "q6,x,L");
+            copiaPatrones.agregarTransicion("q6,B", "q0,c,R");
+
+            copiaPatrones.agregarTransicion("q7,a", "q8,B,L");
+            copiaPatrones.agregarTransicion("q7,b", "q10,B,L");
+            copiaPatrones.agregarTransicion("q7,c", "q11,B,L");
+
+            copiaPatrones.agregarTransicion("q8,B", "q9,a,R");
+
+            copiaPatrones.agregarTransicion("q9,B", "q7,B,R");
+
+            copiaPatrones.agregarTransicion("q10,B", "q9,b,R");
+
+            copiaPatrones.agregarTransicion("q11,B", "q9,c,R");
+
+
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
             //SUMA UNARIA
             sumaUnaria.agregarTransicion("q0,1", "q0,1,R");
             sumaUnaria.agregarTransicion("q0,+", "q1,1,R");
@@ -105,7 +171,30 @@ namespace maquinaDeTuring
                     break;
 
                 case "Copiar Patrones (a, b, c)":
-                    timer1.Enabled = false;
+                    simboloAux = dgvCintaMT[cabezalMT, 0].Value.ToString();
+                    if (copiaPatrones.siguienteEstado(simboloAux))
+                    {
+                        lblIndicadorEstadoContador.Text = "Estado: " + sumaUnaria.obtenerEstadoActual() + " Contador Pasos: " + contadorPasos.ToString();
+                        transicionAuxSplit = copiaPatrones.obtenerTransicionActual().Split(',');
+                        dgvCintaMT[cabezalMT, 0].Value = transicionAuxSplit[1];
+                        dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.White;
+                        cabezalMT = cabezalMT + dirreccion(transicionAuxSplit[2]);
+                        dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.Yellow;
+                        contadorPasos++;
+                    }
+                    else
+                    {
+                        if (copiaPatrones.esEstadoFinal())
+                        {
+                            lblIndicadorEstadoContador.Text = "Cadena aceptada, se realizo en: " + contadorPasos.ToString() + " pasos.";
+                            timer1.Enabled = false;
+                        }
+                        else
+                        {
+                            lblIndicadorEstadoContador.Text = "Cadena no aceptada, se realizo en: " + contadorPasos.ToString() + " pasos.";
+                            timer1.Enabled = false;
+                        }
+                    }
                     break;
 
                 case "Multiplicaciones Codigo Unario":
@@ -123,23 +212,6 @@ namespace maquinaDeTuring
                         cabezalMT = cabezalMT + dirreccion(transicionAuxSplit[2]);
                         dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.Yellow;
                         contadorPasos++;
-
-                        //lblIndicadorEstadoContador.Text = "Estado: " + sumaUnaria.obtenerEstadoActual() + " Contador Pasos: " + contadorPasos.ToString();
-                        //string llaveTransicionAux = sumaUnaria.obtenerEstadoActual()+"," + simboloAux;
-                        //transicionAux = sumaUnaria.obtenerTransicion(llaveTransicionAux);
-                        //if (transicionAux !=null)
-                        //{
-                        //    
-                        //    //sumaUnaria.ponerActual( transicionAuxSplit[0]);
-                        //    dgvCintaMT[cabezalMT, 0].Value = transicionAuxSplit[1];
-                        //    dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.White;
-                        //    cabezalMT = cabezalMT + dirreccion(transicionAuxSplit[2]);
-                        //    dgvCintaMT.Rows[0].Cells[cabezalMT].Style.BackColor = Color.Yellow;
-                        //    contadorPasos++;
-                        //}
-
-
-
                     }
                     else
                     {
@@ -160,11 +232,11 @@ namespace maquinaDeTuring
                     timer1.Enabled = false;
                     break;
             }
-            timer1.Enabled = false;
         }
 
         private void btnEmpezar_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             lblIndicadorEstadoContador.Text = "Estado: q0 Contador Pasos: 0";
             if (txtCadena.Text != "")
             {
@@ -184,13 +256,27 @@ namespace maquinaDeTuring
                             break;
 
                         case "Copiar Patrones (a, b, c)":
+                            if (copiaPatrones.verificarSimbolosEntrada(cadena))
+                            {
+                                cadena = txtCadena.Text + "xBBBBBBBB";
+                                copiaPatrones.volverAEstadoCero();
+                                btnAvanzarAutomatico.Enabled = true;
+                                btnAvanzarPasoAPaso.Enabled = true;
+                                agregarACinta();
+                            }
+                            else
+                            {
+                                errorDeCadenaSimbolos();
+                            }
+
+                            break;
                             break;
 
                         case "Multiplicaciones Codigo Unario":
                             break;
 
                         case "Suma Codigo Unario":
-                            if (sumaUnaria.verificarSimbolosEntrada(cadena))
+                            if (sumaUnaria.verificarSimbolosEntrada(cadena)&& IngresoBienSuma())
                             {
                                 cadena = txtCadena.Text + "BBBBBBBB";
                                 sumaUnaria.volverAEstadoCero();
@@ -217,6 +303,17 @@ namespace maquinaDeTuring
             else {
                 inicializarBotones();
                 MessageBox.Show("Hemos detectado que ha ingresado una cadena vacia, porfavor ingrese una cadena");
+            }
+        }
+
+        //Comprobar que la suma venga de modo 1xxx-xxx1
+        private bool IngresoBienSuma() {
+            if ((cadena[1]==1)&&(cadena.Length-1==1)&&(cadena.Contains("+")))
+            {
+                return true;
+            }else
+            {
+                return false;
             }
         }
 
